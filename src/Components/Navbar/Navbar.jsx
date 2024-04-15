@@ -32,7 +32,6 @@ const Navbar = () => {
               <NavLink className="" to={"/"}>
                 Home
               </NavLink>
-              <NavLink to={"/ListedBookes"}>Listed Bookes</NavLink>
               <NavLink to={"/PagetoRead"}>Pages to Read</NavLink>
               <NavLink>Update Profile</NavLink>
             </div>
@@ -42,9 +41,6 @@ const Navbar = () => {
         <nav id="nav" className="navbar-center hidden lg:flex gap-4 text-2xl ">
           <NavLink className="btn btn-outline btn-info" to={"/"}>
             Home
-          </NavLink>
-          <NavLink className="btn btn-outline btn-info" to={"/ListedBookes"}>
-            Listed Bookes
           </NavLink>
           <NavLink className="btn btn-outline btn-info" to={'/PagetoRead'}>Update Profile</NavLink>
         </nav>
