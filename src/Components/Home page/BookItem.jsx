@@ -3,37 +3,39 @@ import { Link } from "react-router-dom";
 import '../../../src/App.css';
 
 const BookItem = ({ bookes }) => {
-  const { id, image, bookName, author, rating, tags, category } = bookes;
+  const { id, image, estate_title, segment_name, description, price, area, facilities } = bookes;
 
   return (
     <div className="contant">
       <Link to={`/bookes/${id}`}>
         <div className="card w-96 bg-base-100 shadow-xl border">
-          <figure className="px-10 pt-10">
-            <img src={image} alt="Error" className="rounded-xl" />
+          <figure className="px-5 pt-5">
+            <img src={image} alt="Error" className="rounded-sm" />
           </figure>
 
           <div className="card-body  ">
-            <p className="flex">
-              {tags.map((item, idx) => (
-                <p key={idx} className="text-[#23be0a] text-xl">
+            <h1 className=""><span className="text-2xl font-bold mb-2">Facilities :</span>
+              {facilities.map((item, idx) => (
+                <li key={idx} className="text-[#23be0a] text-xl">
                   {item}
-                </p>
+                </li>
               ))}
-            </p>
+            </h1>
 
-            <h2 className="card-title my-4">{bookName} </h2>
-            <p className="text-lg text-[#131313cc] work">By : {author} </p>
+            <h2 className="card-title my-4">{estate_title} </h2>
+            <p>{description}</p>
+            <p className="text-lg text-[#131313cc] work">Segment Name : {segment_name} </p>
             <hr />
             <div className="flex justify-between work">
-              <h2>{category}</h2>
+              <h2>Price : {price}</h2>
               <h2 className="flex items-center justify-center gap-2">
-                <span>{rating}</span>
-                <CiStar className="text-xl" />
+                <span>{area}</span>
               </h2>
             </div>
           </div>
+          <button className="btn btn-warning">view Details</button>
         </div>
+        
       </Link>
     </div>
   );
