@@ -52,7 +52,7 @@ const SignUp = () => {
   return (
     <div>
       <Helmet>
-        <title>Email | sign up</title>
+        <title>UrbanNest | sign up</title>
       </Helmet>
       <div className=" text-center bg-[#3e00e75d]">
         <h1 className="text-4xl font-semibold p-5">Sign Up</h1>

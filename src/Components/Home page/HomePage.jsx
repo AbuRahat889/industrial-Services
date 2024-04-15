@@ -9,7 +9,7 @@ const HomePage = () => {
   //   console.log(BooksData);
   return (
     <div>
-      <Helmet><title>Book Vibe |Home</title></Helmet>
+      <Helmet><title>UrbanNest | Home</title></Helmet>
       {/* bannar section  */}
 
     

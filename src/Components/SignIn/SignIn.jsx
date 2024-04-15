@@ -114,7 +114,7 @@ const SignIn = () => {
   return (
     <div>
       <Helmet>
-        <title>Email | sign in</title>
+        <title>UrbanNest | sign in</title>
       </Helmet>
 
       <div className=" text-center bg-[#3e00e75d]">

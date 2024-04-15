@@ -16,7 +16,7 @@ const BookDetails = () => {
   return (
     <div className="contant">
       <Helmet>
-        <title>Book Vibe | Details Book {id}</title>
+        <title>UrbanNest | Details {id}</title>
       </Helmet>
 
       <div className="hero rounded-lg bg-base-200">
