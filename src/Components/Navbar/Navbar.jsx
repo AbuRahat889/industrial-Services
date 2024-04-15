@@ -34,6 +34,7 @@ const Navbar = () => {
               </NavLink>
               <NavLink to={"/PagetoRead"}>Pages to Read</NavLink>
               <NavLink>Update Profile</NavLink>
+              <NavLink to={'/contactus'}>ContactUs</NavLink>
             </div>
           </div>
           <a className="btn btn-ghost text-3xl font-bold">UrbanNest</a>
@@ -42,7 +43,9 @@ const Navbar = () => {
           <NavLink className="btn btn-outline btn-info" to={"/"}>
             Home
           </NavLink>
+          <NavLink className="btn btn-outline btn-info" to={'/contactus'}>ContactUs</NavLink>
           <NavLink className="btn btn-outline btn-info" to={'/PagetoRead'}>Update Profile</NavLink>
+          
         </nav>
 
         <div className="navbar-end gap-3 ">

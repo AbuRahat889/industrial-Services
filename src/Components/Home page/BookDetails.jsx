@@ -20,7 +20,7 @@ const BookDetails = () => {
       </Helmet>
 
       <div className="hero rounded-lg bg-base-200">
-        <div className="hero-content flex-col lg:flex-row-reverse gap-48 h-24">
+        <div className="hero-content flex-col lg:flex-row-reverse gap-48">
           <div className="text-center lg:text-left flex-1">
             <h1 className="text-3xl font-bold">{bookes.estate_title}</h1>
             

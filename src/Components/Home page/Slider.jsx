@@ -1,4 +1,5 @@
-// import sliderImage from '../../public/image/img1'
+import { Link } from "react-router-dom";
+
 
 const Slider = () => {
   return (
@@ -26,7 +27,9 @@ const Slider = () => {
                   added activity to beta test. Override the digital divide with
                   additional clickthroughs.
                 </p>
+                <Link to={'/signin'}>
                 <button className="btn btn-warning">Get Started</button>
+                </Link>
               </div>
             </div>
           </div>

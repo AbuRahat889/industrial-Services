@@ -3,8 +3,6 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import ListedBookes from "./Components/Listed Books/ListedBookes";
-import PagetoRead from "./Components/Page to Read/PagetoRead";
 import HomePage from "./Components/Home page/HomePage";
 // import Bookdetail from "./Components/Home page/Bookdetail";
 import BookDetails from "./Components/Home page/BookDetails";
@@ -12,6 +10,7 @@ import ErrorPage from "./Components/Utillity/ErrorPage";
 import { HelmetProvider } from "react-helmet-async";
 import SignIn from "./Components/SignIn/SignIn";
 import SignUp from "./Components/SignUp/SignUp";
+import ContactUs from "./Components/ContactUs/ContactUs";
 
 
 
@@ -27,11 +26,6 @@ const router = createBrowserRouter([
         element: <HomePage></HomePage>,
       },
       {
-        path: "/PagetoRead",
-        element: <PagetoRead></PagetoRead>,
-        loader: () => fetch("/BooksData.json"),
-      },
-      {
         path: "/bookes/:id",
         loader: () => fetch("/BooksData.json"),
         element: <BookDetails></BookDetails>,
@@ -43,6 +37,10 @@ const router = createBrowserRouter([
       {
         path:'/signup',
         element:<SignUp></SignUp>
+      },
+      {
+        path:'/contactus',
+        element:<ContactUs></ContactUs>
       }
     ],
   },
