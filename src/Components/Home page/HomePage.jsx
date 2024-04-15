@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 import BookItem from "./BookItem";
 import { Helmet } from "react-helmet-async";
 import Slider from "./Slider";
+import AbutUs from "../About/AbutUs";
 
 const HomePage = () => {
   const BookesData = useLoaderData([]);
@@ -15,8 +16,9 @@ const HomePage = () => {
       <Slider></Slider>
     
       <h1 className="text-4xl font-bold text-center mt-20">
-        Books : {BookesData.length}
+      Our Services
       </h1>
+      <div className="divider divider-warning px-96 text-center"></div>
 
       {/* use card */}
       <div className="grid md:grid-cols-3 gap-4 mt-10">
@@ -24,6 +26,7 @@ const HomePage = () => {
           <BookItem key={BookesData.id} bookes={bookes}></BookItem>
         ))}
       </div>
+      <AbutUs></AbutUs>
     </div>
   );
 };

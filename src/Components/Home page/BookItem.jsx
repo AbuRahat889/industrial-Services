@@ -17,6 +17,7 @@ const BookItem = ({ bookes }) => {
 
   return (
     <div className="contant">
+      
       <div className="card w-96 bg-base-100 shadow-xl border">
         <figure className="px-5 pt-5">
           <img src={image} alt="Error" className="rounded-sm" />
