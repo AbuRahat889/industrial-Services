@@ -17,10 +17,12 @@ const SignUp = () => {
   //sign up
   const handleSignUp = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
-    const email = e.target.email.value;
-    const password = e.target.password.value;
-    const photoURL = e.target.photourl.value;
+    const form = new FormData(e.currentTarget);
+    const name = form.get('name');
+    const email = form.get('email');
+    const password = form.get('password');
+    const photoURL = form.get('photo');
+    // console.log(photoURL);
     
     
     //check password lengtn
@@ -95,7 +97,7 @@ const SignUp = () => {
                 <span className="label-text">Photo URL</span>
               </label>
               <input
-                name="photourl"
+                name="photo"
                 type="text"
                 placeholder="URL"
                 className="input input-bordered"

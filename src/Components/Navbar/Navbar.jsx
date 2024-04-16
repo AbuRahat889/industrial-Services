@@ -3,6 +3,7 @@ import "../../../src/App.css";
 import "./Navbar.css";
 import { useContext } from "react";
 import { AuthContex } from "../../Contex/AuthProvider";
+import { GrUserManager } from "react-icons/gr";
 // import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
@@ -43,7 +44,9 @@ const Navbar = () => {
                 Home
               </NavLink>
               <NavLink to={"/PagetoRead"}>Pages to Read</NavLink>
-              <NavLink to={'/updateProfile'}>Update Profile</NavLink>
+              {
+              user && <NavLink to={'/updateProfile'}>Update Profile</NavLink>
+              }
               <NavLink to={'/contactus'}>ContactUs</NavLink>
             </div>
           </div>
@@ -64,7 +67,9 @@ const Navbar = () => {
         <div className="navbar-end gap-3 ">
           {
             user ? <>
-              <span>{user.email}</span>
+              <div className="border p-2 rounded-full mr-2">
+              <GrUserManager  className="text-5xl"/>
+              </div>
               <a onClick={handleLogout} className="btn bg-[#23be0a] text-white">Sign out</a>
             </> :
             <NavLink to={'/signin'} className="btn bg-[#009de4] text-white">Sign in</NavLink>
