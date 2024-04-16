@@ -3,6 +3,7 @@ import "../../../src/App.css";
 import "./Navbar.css";
 import { useContext } from "react";
 import { AuthContex } from "../../Contex/AuthProvider";
+// import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {
   const {user, logOut} = useContext(AuthContex);
@@ -13,6 +14,7 @@ const Navbar = () => {
   }
   return (
     <div className="work contant">
+      
       <div className="navbar bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">

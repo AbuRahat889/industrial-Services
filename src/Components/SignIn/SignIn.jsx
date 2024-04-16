@@ -1,7 +1,6 @@
 import {
   sendPasswordResetEmail,
   signInWithPopup,
-  signInWithEmailAndPassword,
   GoogleAuthProvider,
   FacebookAuthProvider,
 } from "firebase/auth";
@@ -11,6 +10,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import auth from "../firebase";
 import { Link } from "react-router-dom";
 import { AuthContex } from "../../Contex/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignIn = () => {
   const [showError, setShowError] = useState();
@@ -31,6 +31,7 @@ const SignIn = () => {
 
         const credential = FacebookAuthProvider.credentialFromResult(result);
         const accessToken = credential.accessToken;
+        toast.success("successfully sign in!!!")
       })
       .catch((error) => {
         // Handle Errors here.
@@ -40,6 +41,7 @@ const SignIn = () => {
         const email = error.customData.email;
         // The AuthCredential type that was used.
         const credential = FacebookAuthProvider.credentialFromError(error);
+        toast.error(errorMessage);
       });
   };
 
@@ -53,10 +55,11 @@ const SignIn = () => {
         const logInUsesr = result.user;
         console.log(logInUsesr);
         setUser(logInUsesr);
+        toast.success("sign in successfully!!")
       })
       .catch((error) => {
         const errorMessage = error.message;
-        // console.log(errorMessage);
+        toast.error(errorMessage);
       });
   };
 
@@ -81,12 +84,12 @@ const SignIn = () => {
       .then((res) => {
         // const user = res.user;
         // console.log(res);
-        alert("Successfully sign in your account");
+        toast.success("Successfully sign in your account");
 
       })
       .catch((error) => {
         const errorMessage = error.message;
-        alert(errorMessage);
+        toast.error(errorMessage);
       });
   };
 
@@ -94,18 +97,19 @@ const SignIn = () => {
   const handleForgotPass = () => {
     const email = emailRef.current.value;
     if (!email) {
-      alert("please provide an email!!");
+      toast.success("please provide an email!!")
       return;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-      alert("please write a valied email");
+      toast.error("please write a valied email");
       return;
     }
 
     //send Forgot Password
     sendPasswordResetEmail(auth, email)
-      .then(() => alert("check your email"))
+      .then(() =>toast.success("check your email"))
       .catch((error) => {
         const errorMessage = error.message;
+        toast.error(errorMessage);
       });
   };
 
@@ -115,6 +119,7 @@ const SignIn = () => {
         <title>UrbanNest | sign in</title>
       </Helmet>
 
+      <ToastContainer />
       <div className=" text-center bg-[#3e00e75d]">
         <h1 className="text-4xl font-semibold p-5">Sign In</h1>
       </div>
@@ -188,7 +193,7 @@ const SignIn = () => {
 
             <p>
               If you new to this website?{" "}
-              <Link to="/signup" className="underline">
+              <Link to="/signup" className="underline font-bold">
                 Please Sign up
               </Link>
             </p>

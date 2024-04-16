@@ -1,6 +1,6 @@
 
 import { useLoaderData, useParams } from "react-router-dom";
-import { ToastContainer} from "react-toastify";
+
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from "react-helmet-async";
 import '../../../src/App.css';

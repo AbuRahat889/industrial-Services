@@ -2,9 +2,9 @@
 import { Helmet } from "react-helmet-async";
 import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-import auth from "../firebase";
 import { Link } from "react-router-dom";
 import { AuthContex } from "../../Contex/AuthProvider";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignUp = () => {
   const [showError, setShowError] = useState();
@@ -40,13 +40,14 @@ const SignUp = () => {
     createUser( email, password)
       .then((res) => {
         // const user = res.user;
-        // console.log(res.user);
-        setSuccess("Successfully create your account");
+        toast.success("Successfully create your account");
+        // setSuccess("Successfully create your account");
       
       })
       .catch((error) => {
         const errorMessage = error.message;
-        setShowError(errorMessage);
+        // setShowError(errorMessage);
+        toast.error(errorMessage);
       });
   };
 
@@ -55,6 +56,7 @@ const SignUp = () => {
       <Helmet>
         <title>UrbanNest | sign up</title>
       </Helmet>
+      <ToastContainer />
       <div className=" text-center bg-[#3e00e75d]">
         <h1 className="text-4xl font-semibold p-5">Sign Up</h1>
       </div>
@@ -138,7 +140,7 @@ const SignUp = () => {
             </div>
             <p>
               If you have an account? Please{" "}
-              <Link to="/signin" className="underline">
+              <Link to="/signin" className="underline font-bold">
                 Sign in
               </Link>
             </p>
