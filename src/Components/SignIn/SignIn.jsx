@@ -80,6 +80,7 @@ const SignIn = () => {
     signIn( email, password)
       .then((res) => {
         // const user = res.user;
+        // console.log(res);
         alert("Successfully sign in your account");
 
       })
