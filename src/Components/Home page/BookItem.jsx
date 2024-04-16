@@ -49,7 +49,7 @@ const BookItem = ({ bookes }) => {
           </div>
         </div>
         <Link to={`/bookes/${id}`} className="text-center mb-5">
-          <button className="btn btn-warning mt-auto">view Details</button>
+          <button className="btn btn-warning mt-auto">View Property</button>
         </Link>
       </div>
     </div>

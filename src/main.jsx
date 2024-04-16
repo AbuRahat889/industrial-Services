@@ -12,6 +12,9 @@ import SignIn from "./Components/SignIn/SignIn";
 import SignUp from "./Components/SignUp/SignUp";
 import ContactUs from "./Components/ContactUs/ContactUs";
 import AuthProvider from "./Contex/AuthProvider";
+import UpdatePro from "./Components/Update Profile/UpdatePro";
+import PrivateRoute from './Components/Private Routs/PrivateRoute';
+
 
 const router = createBrowserRouter([
   {
@@ -27,7 +30,9 @@ const router = createBrowserRouter([
       {
         path: "/bookes/:id",
         loader: () => fetch("/BooksData.json"),
-        element: <BookDetails></BookDetails>,
+        element:<PrivateRoute>
+          <BookDetails></BookDetails>
+        </PrivateRoute>,
       },
       {
         path: "/signin",
@@ -39,8 +44,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/contactus",
-        element: <ContactUs></ContactUs>,
+        element: <PrivateRoute>
+          <ContactUs></ContactUs>
+        </PrivateRoute>,
       },
+      {
+        path:'/updateProfile',
+        element:<UpdatePro></UpdatePro>
+      }
     ],
   },
 ]);

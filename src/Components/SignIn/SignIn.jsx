@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet-async";
 import { useContext, useRef, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import auth from "../firebase";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContex } from "../../Contex/AuthProvider";
 import { ToastContainer, toast } from "react-toastify";
 
@@ -18,6 +18,7 @@ const SignIn = () => {
   const [showPass, setShowPass] = useState(true);
   const [user, setUser] = useState({});
   const emailRef = useRef(null);
+  const navigate = useNavigate();
 
   const {signIn} = useContext(AuthContex);
 
@@ -85,6 +86,8 @@ const SignIn = () => {
         // const user = res.user;
         // console.log(res);
         toast.success("Successfully sign in your account");
+        e.target.reset();
+        navigate('/');
 
       })
       .catch((error) => {

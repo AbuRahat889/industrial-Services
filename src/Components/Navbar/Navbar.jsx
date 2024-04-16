@@ -43,7 +43,7 @@ const Navbar = () => {
                 Home
               </NavLink>
               <NavLink to={"/PagetoRead"}>Pages to Read</NavLink>
-              <NavLink>Update Profile</NavLink>
+              <NavLink to={'/updateProfile'}>Update Profile</NavLink>
               <NavLink to={'/contactus'}>ContactUs</NavLink>
             </div>
           </div>
@@ -54,7 +54,10 @@ const Navbar = () => {
             Home
           </NavLink>
           <NavLink className="btn btn-outline btn-info" to={'/contactus'}>ContactUs</NavLink>
-          <NavLink className="btn btn-outline btn-info" to={'/PagetoRead'}>Update Profile</NavLink>
+          {
+            user &&
+            <NavLink className="btn btn-outline btn-info" to={'/updateProfile'}>Update Profile</NavLink>
+            }
           
         </nav>
 
