@@ -67,9 +67,10 @@ const Navbar = () => {
         <div className="navbar-end gap-3 ">
           {
             user ? <>
-              <div className="border p-2 rounded-full mr-2">
-              <GrUserManager  className="text-5xl"/>
-              </div>
+              <img src={
+                user.photoURL || "https://i.ibb.co/wyYzNJz/man.jpg"
+              } alt=""  className="rounded-full w-16"/>
+              
               <a onClick={handleLogout} className="btn bg-[#23be0a] text-white">Sign out</a>
             </> :
             <NavLink to={'/signin'} className="btn bg-[#009de4] text-white">Sign in</NavLink>

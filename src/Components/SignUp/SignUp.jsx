@@ -11,7 +11,7 @@ const SignUp = () => {
   const [success, setSuccess] = useState();
   const [showPass, setShowPass] = useState(true);
 
-  const { createUser } = useContext(AuthContex);
+  const { createUser, updateUserInfo } = useContext(AuthContex);
 
 
   //sign up
@@ -23,6 +23,7 @@ const SignUp = () => {
     const password = form.get('password');
     const photoURL = form.get('photo');
     // console.log(photoURL);
+    const {userName, image} = updateUserInfo;
     
     
     //check password lengtn
@@ -38,12 +39,12 @@ const SignUp = () => {
     setShowError(" ");
     setSuccess(" ");
 
-    //user create
+    //user create and update user info
     createUser( email, password)
       .then((res) => {
-        // const user = res.user;
-        toast.success("Successfully create your account");
-        // setSuccess("Successfully create your account");
+        toast.success("Successfully create your account"); 
+        
+        updateUserInfo(userName, image);
       
       })
       .catch((error) => {
