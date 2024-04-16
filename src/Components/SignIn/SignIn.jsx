@@ -6,10 +6,11 @@ import {
   FacebookAuthProvider,
 } from "firebase/auth";
 import { Helmet } from "react-helmet-async";
-import { useRef, useState } from "react";
-import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa";
+import { useContext, useRef, useState } from "react";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 import auth from "../firebase";
 import { Link } from "react-router-dom";
+import { AuthContex } from "../../Contex/AuthProvider";
 
 const SignIn = () => {
   const [showError, setShowError] = useState();
@@ -17,6 +18,8 @@ const SignIn = () => {
   const [showPass, setShowPass] = useState(true);
   const [user, setUser] = useState({});
   const emailRef = useRef(null);
+
+  const {signIn} = useContext(AuthContex);
 
   //sigb in facebook
   const fbProvider = new FacebookAuthProvider();
@@ -74,21 +77,15 @@ const SignIn = () => {
     setSuccess(" ");
 
     //sign in
-    signInWithEmailAndPassword(auth, email, password)
+    signIn( email, password)
       .then((res) => {
         // const user = res.user;
-        // console.log(res.user);
+        alert("Successfully sign in your account");
 
-        //email verified
-        if (res.user.emailVerified) {
-          setSuccess("Successfully sign in your account");
-        } else {
-          alert("please verified you email..");
-        }
       })
       .catch((error) => {
         const errorMessage = error.message;
-        setShowError(errorMessage);
+        alert(errorMessage);
       });
   };
 

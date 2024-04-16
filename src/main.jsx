@@ -11,8 +11,7 @@ import { HelmetProvider } from "react-helmet-async";
 import SignIn from "./Components/SignIn/SignIn";
 import SignUp from "./Components/SignUp/SignUp";
 import ContactUs from "./Components/ContactUs/ContactUs";
-
-
+import AuthProvider from "./Contex/AuthProvider";
 
 const router = createBrowserRouter([
   {
@@ -31,27 +30,27 @@ const router = createBrowserRouter([
         element: <BookDetails></BookDetails>,
       },
       {
-        path:"/signin",
-        element:<SignIn></SignIn>
+        path: "/signin",
+        element: <SignIn></SignIn>,
       },
       {
-        path:'/signup',
-        element:<SignUp></SignUp>
+        path: "/signup",
+        element: <SignUp></SignUp>,
       },
       {
-        path:'/contactus',
-        element:<ContactUs></ContactUs>
-      }
+        path: "/contactus",
+        element: <ContactUs></ContactUs>,
+      },
     ],
   },
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <HelmetProvider>
-      <RouterProvider router={router}></RouterProvider>
-    </HelmetProvider>
- 
-    
+    <AuthProvider>
+      <HelmetProvider>
+        <RouterProvider router={router}></RouterProvider>
+      </HelmetProvider>
+    </AuthProvider>
   </React.StrictMode>
 );

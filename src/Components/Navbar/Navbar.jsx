@@ -53,9 +53,7 @@ const Navbar = () => {
             <a className="btn bg-[#23be0a] text-white">Sign in</a>
           </NavLink>
 
-          <NavLink to={"/signup"}>
-            <a className="btn bg-[#59C6D2] text-white">Sign up</a>
-          </NavLink>
+      
         </div>
       </div>
     </div>

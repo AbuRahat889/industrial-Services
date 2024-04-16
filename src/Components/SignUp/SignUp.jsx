@@ -1,16 +1,17 @@
-import {
-  createUserWithEmailAndPassword,
-} from "firebase/auth";
+
 import { Helmet } from "react-helmet-async";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import auth from "../firebase";
 import { Link } from "react-router-dom";
+import { AuthContex } from "../../Contex/AuthProvider";
 
 const SignUp = () => {
   const [showError, setShowError] = useState();
   const [success, setSuccess] = useState();
   const [showPass, setShowPass] = useState(true);
+
+  const { createUser } = useContext(AuthContex);
 
 
   //sign up
@@ -36,7 +37,7 @@ const SignUp = () => {
     setSuccess(" ");
 
     //user create
-    createUserWithEmailAndPassword(auth, email, password)
+    createUser( email, password)
       .then((res) => {
         // const user = res.user;
         // console.log(res.user);
