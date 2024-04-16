@@ -3,7 +3,7 @@ import "../../../src/App.css";
 import "./Navbar.css";
 import { useContext } from "react";
 import { AuthContex } from "../../Contex/AuthProvider";
-import { GrUserManager } from "react-icons/gr";
+
 // import { ToastContainer, toast } from "react-toastify";
 
 const Navbar = () => {

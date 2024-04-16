@@ -10,7 +10,6 @@ const SignUp = () => {
   const [showError, setShowError] = useState();
   const [success, setSuccess] = useState();
   const [showPass, setShowPass] = useState(true);
-
   const { createUser, updateUserInfo } = useContext(AuthContex);
 
 
@@ -18,11 +17,8 @@ const SignUp = () => {
   const handleSignUp = (e) => {
     e.preventDefault();
     const form = new FormData(e.currentTarget);
-    const name = form.get('name');
     const email = form.get('email');
     const password = form.get('password');
-    const photoURL = form.get('photo');
-    // console.log(photoURL);
     const {userName, image} = updateUserInfo;
     
     
@@ -42,6 +38,7 @@ const SignUp = () => {
     //user create and update user info
     createUser( email, password)
       .then((res) => {
+        console.log(res);
         toast.success("Successfully create your account"); 
         
         updateUserInfo(userName, image);
