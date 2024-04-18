@@ -1,89 +1,70 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { AuthContex } from "../../Contex/AuthProvider";
 
+
 const UpdatePro = () => {
-    const { user, updateUserInfo } = useContext(AuthContex);
-    const {userName, image} = updateUserInfo;
-    const [isEditing, SetIsEditing] = useState(false);
-    const [editName, setEditName] = useState(userName);
-    const [editURl, setURL] = useState(image);
+    const { user, updateUserProfile, setUser } = useContext(AuthContex);
 
-    //handle changes
-    const handleChanges = (e)=>{
+    const updation = e => {
         e.preventDefault();
-        SetIsEditing(isEditing);
-    }
+        const name = e.target.name.value;
+        const photo = e.target.photo.value;
 
- 
-  return (
-    <div>
-      <h1 className="text-5xl text-center bg-green-400 py-3">
-        Update Your Profile.
-      </h1>
-    <h1>hello . {editName} </h1>
-      <div className=" text-center m-3">
-      <img src={
-                user.photoURL || "https://i.ibb.co/wyYzNJz/man.jpg"
-              } alt=""  className="rounded-full inline w-36"/>
-      </div>
+        updateUserProfile(name, photo)
+            .then(() => {
+                setUser({
+                    user,
+                    displayName: name,
+                    photoURL: photo
+                });
+            })
+            .catch(error => {
+                console.error("Error updating profile:", error);
+            });
+    };
 
-      <div className="hero ">
-        <div className="hero-content lg:flex-row-reverse">
-          <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-            <form className="card-body" onSubmit={handleChanges}>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Name</span>
-                </label>
-                {
-                    isEditing ? (
-                        <input
-                  value={userName}
-                  type="name"
-                  placeholder="name"
-                  className="input input-bordered"
-                  required
-                  onChange={e=>{
-                    setEditName(e.target.value);
-                  }}
-                />
-                    ): (<span>{editName}</span>)
-                }
-                
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Photo URL</span>
-                </label>
-
-                {
-                    isEditing ? (
-                        <input
-                        value={image}
-                        type="text"
-                        placeholder="url"
-                        className="input input-bordered"
-                        required
-                        onChange={e=>{
-                        setURL(e.target.value);
-                  }}
-                />
-                    ): (<span>{editURl}</span>)
-                }
-
-              </div>
-
-              <div className="form-control mt-6">
-                <button className="btn btn-primary" type="submit">
-                    {isEditing ? "Save Changes" : "Edit Info"}
-                </button>
-              </div>
-            </form>
-          </div>
+    return (
+        <div className="lg:flex grid">
+            <HelmetProvider>
+            <Helmet><title>User Profile</title></Helmet>
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col lg:flex-row">
+                    <img src={user?.photoURL} className="max-w-sm rounded-lg shadow-2xl" alt="https://i.ibb.co/wyYzNJz/man.jpg" />
+                    <div>
+                        <h1 className="text-5xl font-bold">{user?.displayName}</h1>
+                        <p className="py-6">{user?.email}</p>
+                    </div>
+                </div>
+            </div>
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col lg:flex-row-reverse">
+                    <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
+                        <form onSubmit={updation} className="card-body">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Name</span>
+                                </label>
+                                <input type="text" defaultValue={user?.displayName} name="name" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Photo</span>
+                                </label>
+                                <input type="text" defaultValue={user?.photoURL} name="photo" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control mt-6 gap-y-3">
+                                <button className="btn btn-primary">Update</button>
+                                <Link className="btn btn-primary" to="/" > Go back </Link>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            </HelmetProvider>
         </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default UpdatePro;

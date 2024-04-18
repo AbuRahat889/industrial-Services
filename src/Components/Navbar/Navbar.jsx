@@ -67,6 +67,7 @@ const Navbar = () => {
         <div className="navbar-end gap-3 ">
           {
             user ? <>
+            
               <img src={
                 user.photoURL || "https://i.ibb.co/wyYzNJz/man.jpg"
               } alt=""  className="rounded-full w-16"/>
