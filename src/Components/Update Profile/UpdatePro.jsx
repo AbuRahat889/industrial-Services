@@ -28,7 +28,7 @@ const UpdatePro = () => {
     return (
         <div className="lg:flex grid">
             <HelmetProvider>
-            <Helmet><title>User Profile</title></Helmet>
+            <Helmet><title>UrbanNest | Update Profile</title></Helmet>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col lg:flex-row">
                     <img src={user?.photoURL} className="max-w-sm rounded-lg shadow-2xl" alt="https://i.ibb.co/wyYzNJz/man.jpg" />
