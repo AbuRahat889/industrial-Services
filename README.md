@@ -2,7 +2,7 @@
 
 # UrbanNest Development
 
-[Live Site](https://email-password-20c56.web.app/)
+Live Site: https://email-password-20c56.web.app
 
 ## Features and Characteristics
 
